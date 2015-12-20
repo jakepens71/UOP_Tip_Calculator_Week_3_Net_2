@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace UOPExceptionHandling
 {
     public partial class Form1 : Form
@@ -15,8 +16,9 @@ namespace UOPExceptionHandling
         string bill = "";
         string tip = "";
         string totalAmount = "";
-       
 
+
+        InvalidDoubleException dblExeception = new InvalidDoubleException();
 
         public Form1()
         {
@@ -45,17 +47,31 @@ namespace UOPExceptionHandling
                 }
 
 
-                double.TryParse(bill, out dblBill);
-
-                double.TryParse(tip, out dblTip);
-
-                if (dblBill == 0 || dblTip == 0)
+                try
                 {
-                    MessageBox.Show("Bill has to be in a dollar amount. Example: 28.50");
+                   dblBill = double.Parse(bill);
                 }
-                else
+                catch (Exception ex)
                 {
+                   throw new  InvalidDoubleException("The values entered was invalid for this type of calculation. Please use double format values such as '26.12'");
+                }
+
+
+                try {
+                 dblTip = double.Parse(tip);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidDoubleException("The values entered was invalid for this type of calculation. Please use double format values such as '.15'");
+                }
+
+
+               
                     double totalTipAmount = dblBill * dblTip;
+
+                    lblTipAmount.Text = String.Format("{0:C}", totalTipAmount);
+
 
                     dblTotalAmount = totalTipAmount + dblBill;
 
@@ -63,7 +79,7 @@ namespace UOPExceptionHandling
 
 
 
-                }
+                
             }
 
 
