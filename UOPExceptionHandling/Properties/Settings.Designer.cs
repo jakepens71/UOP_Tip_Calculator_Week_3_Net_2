@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExceptionHandlingUOPWeek3JacobShay.Properties
+namespace UOPExceptionHandling.Properties
 {
 
 

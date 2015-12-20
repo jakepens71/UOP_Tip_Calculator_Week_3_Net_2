@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExceptionHandlingUOPWeek3JacobShay.Properties
+namespace UOPExceptionHandling.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace ExceptionHandlingUOPWeek3JacobShay.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExceptionHandlingUOPWeek3JacobShay.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UOPExceptionHandling.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
