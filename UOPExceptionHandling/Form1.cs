@@ -35,7 +35,7 @@ namespace UOPExceptionHandling
             //If bill is equal to blank or tip is blank then all requirements are not met.
             if (bill == "" || tip == "")
             {
-                MessageBox.Show("All Requirements are not met.");
+                MessageBox.Show("Either the Tip or the bill is not filled in properly.");
             }
             else
             {
@@ -49,26 +49,40 @@ namespace UOPExceptionHandling
                     bill = bill.Replace("$", "");
                 }
 
+                
+
+
                 //Attempt to parse the string 'bill' into a double
                 try
                 {
-                   dblBill = double.Parse(bill);
+                    double.TryParse(bill, out dblBill);
+
+                    if (dblBill == 0)
+                    {
+                        throw new InvalidDoubleException();
+                    }
+
                 }
-                catch (Exception ex)
+                catch (InvalidDoubleException ex)
                 {
                     //If the parse fails then throw our exception
-                   throw new  InvalidDoubleException("The values entered was invalid for this type of calculation. Please use double format values such as '26.12'");
+                    MessageBox.Show("Invalid Double Exception. The bill is not in the correct format. Example: 26.50");
                 }
 
                 //Attemp to parse the string 'tip' into a double
                 try {
-                 dblTip = double.Parse(tip);
+                 double.TryParse(tip, out dblTip);
+
+                    if (dblTip == 0)
+                    {
+                        throw new InvalidDoubleException();
+                    }
 
                 }
-                catch (Exception ex)
+                catch (InvalidDoubleException ex)
                 {
                     //If the parse fails then throw our exception
-                    throw new InvalidDoubleException("The values entered was invalid for this type of calculation. Please use double format values such as '.15'");
+                    MessageBox.Show("Invalid Double Exception. The tip is not in the correct format. Example: .15");
                 }
 
 
